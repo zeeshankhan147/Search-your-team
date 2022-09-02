@@ -29,13 +29,15 @@ const Login = ({ navigation }) => {
         }
       }
     const login=()=>{
-        email!=''? validator? password.length != 0 ?
-        dispatch(userLogin(
-            email,
-            password,
-            ()=>navigation.navigate('TabScreen')
-            ))
-            : alert(`Please enter password`) :alert("Please enter a valid email address"):alert('Please enter a email address')
+        // email!=''? validator? password.length != 0 ?
+        // dispatch(userLogin(
+        //     email,
+        //     password,
+        //     ()=>navigation.navigate('TabScreen')
+        //     ))
+        //     : alert(`Please enter password`) :alert("Please enter a valid email address"):alert('Please enter a email address')
+
+        navigation.navigate('TabScreen')
     }
     return (
         <ScrollView style={{ backgroundColor: "#FFF" }}  >
