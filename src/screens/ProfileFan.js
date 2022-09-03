@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Text, View, Image, FlatList, ScrollView, TouchableOpacity, useWindowDimensions, StyleSheet } from 'react-native'
+import React from "react";
+import { Text, View, Image, FlatList, ScrollView, StyleSheet, useWindowDimensions } from 'react-native'
+import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/Feather'
 import { Colors } from "../utils/Constants";
-import VideoPlayer from 'react-native-video-player'
 const ProfileFan = () => {
     const { width: windowWidth } = useWindowDimensions();
     const DATA = [
@@ -33,48 +33,20 @@ const ProfileFan = () => {
     return (
         <View>
 
-            {/* HEADER */}
+            {/* PROFILE SECTION */}
             <View style={styles.headerContainer}>
-                <Icon name="menu" size={20} color='#fff' />
+                <Icon name="menu" size={20} t color='#fff' />
                 <View style={styles.titleContainer}>
-                    <Text style={styles.headerTitle}>Athlete</Text>
+                    <Text style={styles.headerTitle}>Fan</Text>
                 </View>
             </View>
 
             <ScrollView style={styles.scrollContainer}>
-
-                {/* PROFILE SECTION */}
                 <View style={styles.profileContainer}>
                     <Image source={require('../../assets/images/athlete1.png')}
                         resizeMode='contain' style={styles.profileImage} />
-
                     <View style={styles.profileContent}>
-                        <Text style={styles.profileName}>{`Matthieu \nLaroche`}</Text>
-                        <View style={styles.flagContainer}>
-                            <Image
-                                style={styles.flagImage}
-                                source={require('../../src/assets/france_hires.png')} />
-                            <View style={styles.proContainer}>
-                                <Text style={styles.proText}>PRO</Text>
-                            </View>
-                        </View>
-
-                        <View style={styles.ageContainer}>
-                            <View style={styles.ageBox}>
-                                <Text style={styles.age}>Age : 21</Text>
-                            </View>
-                            <View style={styles.genderContainer}>
-                                <Text style={styles.gender}>MF</Text>
-                            </View>
-                        </View>
-
-                        <View style={styles.countryContainer}>
-                            <Text style={styles.country}>Paris-Saint-Germain</Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.statsBtn}>
-                            <Text style={styles.stats}>Stats</Text>
-                        </TouchableOpacity>
+                        <Text style={styles.profileName}>Chrismand229</Text>
                     </View>
                 </View>
 
@@ -94,33 +66,11 @@ const ProfileFan = () => {
                     </View>
                 </View>
 
-                {/* HIGHLIGHT SECTION */}
-                <View style={styles.highlightSection}>
-                    <View style={styles.highlight_followBtn}>
-
-                        <View style={styles.onlyHighlight}>
-                            <Text style={styles.highlighText}>Highlight</Text>
-                        </View>
-
-                        <View style={styles.followBtn}>
-                            <TouchableOpacity style={styles.btnContainer}>
-                                <Text style={styles.btnText}>Follow</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-
-                    <View style={styles.videosContainer}>
-                        <VideoPlayer
-                            style={styles.highlightVideos}
-                            video={require('../assets/football.mp4')}
-                            videoWidth={200}
-                            resizeMode="stretch"
-                            videoHeight={200}
-                            thumbnail={require('../assets/Playing-Football.png')}
-                        />
-                    </View>
-
-
+                {/* FOLLOW BUTTON */}
+                <View style={styles.followBtnContainer}>
+                    <TouchableOpacity style={styles.followBtn}>
+                        <Text style={styles.followBtnText}>Follow</Text>
+                    </TouchableOpacity>
                 </View>
 
                 {/* LAST POST SECTION */}
@@ -149,10 +99,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 80,
         paddingTop: 40,
-        backgroundColor: '#7EAA7C'
+        backgroundColor:Colors.primaryColor
     },
     titleContainer: {
-        paddingLeft: 130
+        paddingLeft: 160
     },
     headerTitle: {
         fontSize: 18,
@@ -165,87 +115,26 @@ const styles = StyleSheet.create({
     },
     profileContainer: {
         paddingHorizontal: 20,
-        flexDirection: 'row',
         width: '100%',
         alignItems: 'center'
     },
     profileImage: {
-        height: 300,
+        height: 200,
         width: 200,
-        justifyContent: 'flex-start',
-        width: '50%'
+        alignSelf: 'center'
     },
     profileContent: {
+        marginTop: 10,
         flexDirection: 'column',
-        paddingLeft: 20,
-        justifyContent: 'flex-end',
-        width: '50%'
+        paddingLeft: 10
     },
     profileName: {
         letterSpacing: 1,
         color: '#000',
         opacity: 0.7,
-        fontSize: 26,
+        fontSize: 18,
         paddingTop: 15,
-        textAlign: 'left'
-    },
-    flagContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginTop: 20
-    },
-    flagImage: {
-        width: 40,
-        height: 30
-    },
-    proContainer: {
-        backgroundColor: '#F4EF85',
-        paddingHorizontal: 15,
-        paddingVertical: 8,
-        borderRadius: 10,
-        marginLeft: 20
-    },
-    proText: {
-
-    },
-    ageContainer: {
-        flexDirection: 'row',
-        marginTop: 20
-    },
-    ageBox: {
-        backgroundColor: '#DBDBDB',
-        paddingHorizontal: 18,
-        paddingVertical: 6,
-        borderRadius: 10
-    },
-    age: {},
-    genderContainer: {
-        paddingHorizontal: 18,
-        paddingVertical: 6,
-        borderRadius: 10,
-        backgroundColor: '#DBDBDB',
-        marginLeft: 20,
-    },
-    gender: {},
-    countryContainer: {
-        marginTop: 20
-    },
-    country: {
-        fontSize: 18,
-    },
-    statsBtn: {
-        backgroundColor: Colors.primaryColor,
-        marginTop: 20,
-        borderRadius: 14,
-        width: 106,
-        height: 40,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: 10
-    },
-    stats: {
-        fontSize: 18,
-        color: '#fff'
+        alignSelf: 'center'
     },
     followerSection: {
         width: '100%',
@@ -269,53 +158,25 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginTop: 5
     },
-    highlightSection: {
+    followBtnContainer: {
         width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginTop: 30,
     },
-    highlight_followBtn: {
-        paddingHorizontal: 20,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center'
-    },
-    onlyHighlight: {
-        width: '50%',
-        alignItems: 'flex-start'
-    },
-    highlighText: {
-        fontSize: 14,
-        color: '#77838F'
-    },
     followBtn: {
-        width: '50%',
-        alignItems: 'flex-end',
-    },
-    btnContainer: {
         backgroundColor: Colors.primaryColor,
-        width: 106,
+        width: 374,
         height: 40,
-        borderRadius: 14,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: 14,
     },
-    btnText: {
-        color: '#fff',
-        fontSize: 13
-    },
-    videosContainer: {
-        marginHorizontal: 20,
-        width: 386,
-        marginTop: 20,
-        marginBottom: 20,
-    },
-    highlightVideos: {
-        borderRadius: 8,
-        backgroundColor: Colors.primaryColor
+    followBtnText: {
+        color: '#fff'
     },
     lastPostContainer: {
-        marginTop: 15,
+        marginTop: 30,
         marginBottom: 100,
         paddingHorizontal: 0,
     },
@@ -326,6 +187,4 @@ const styles = StyleSheet.create({
         color: '#77838F',
         marginLeft: 20
     }
-
-
-});
+})

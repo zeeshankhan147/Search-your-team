@@ -17,6 +17,8 @@ import PostDetails from "../screens/PostDetail";
 import DiscoverTrails from "../screens/DiscoverTrails";
 import Settings from '../screens/Settings'
 import InputForm from "../screens/InputForm";
+import ProfileAthlete from "../screens/ProfileAthlete";
+
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
     return (
@@ -34,6 +36,7 @@ export default function Navigation() {
                 <Stack.Screen options={{headerShown:false}} name="Settings" component={Settings} />
                 {/* <Stack.Screen options={{headerShown:false}} name="General" component={General} /> */}
                 <Stack.Screen options={{headerShown:false}} name="TabScreen" component={BottomTabs} />
+                <Stack.Screen options={{headerShown:false}} name="ProfileAthlete" component={ProfileAthlete} />
                 {/* <Stack.Screen name="Drawer" component={Drawer}/> */}
                 <Stack.Screen name="TrialProgram" component={TrialProgram} options={{ headerShown: false }}/>
                 <Stack.Screen name="PostDetails" component={PostDetails} options={{ headerShown: false }}/>

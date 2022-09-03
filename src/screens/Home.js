@@ -53,14 +53,14 @@ const Home = ({ navigation }) => {
         },
     ];
     const renderItem = ({ item, index }) => (
-        <View style={{ marginRight: 5 }}>
+        <View style={{ marginRight: 10 }}>
             <VideoPlayer
                 style={{ borderRadius: 8, backgroundColor: Colors.primaryColor }}
                 video={require('../assets/football.mp4')}
-                videoWidth={200}
+                videoWidth={220}
                 resizeMode="stretch"
-                videoHeight={200}
-                thumbnail={require('../assets/Playing-Football.png')}
+                videoHeight={160}
+                thumbnail={require('../../assets/images/Image2.png')}
             />
             <View style={{ paddingTop: 10, flexDirection: 'row' }}>
                 <Image source={item.icon} resizeMode='contain' style={{ alignSelf: 'baseline', borderRadius: 40, height: 30, width: 30 }} />
