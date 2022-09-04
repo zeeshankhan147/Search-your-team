@@ -24,7 +24,7 @@ const Stats = ({ navigation }) => {
         <ScrollView style={{ backgroundColor: "#fafafa", flex: 1 }}  >
             <StatusBar backgroundColor={"#fafafa"} />
             <View style={{ paddingVertical: 10, paddingHorizontal: 10, flexDirection: "row", alignItems: "center", justifyContent: "space-between" }} >
-                <BackIcon onPress={()=>navigation.goBack()} name="arrow-back-outline" size={25} color={"#000"} />
+                <BackIcon onPress={() => navigation.goBack()} name="arrow-back-outline" size={25} color={"#000"} />
                 <Text style={styles.text} >Footballer</Text>
                 <DetailsIcon name="dots-three-vertical" size={25} color={"#000"} />
 
@@ -53,11 +53,11 @@ const Stats = ({ navigation }) => {
                         </View>
                     </View>
                     <View style={{ alignItems: "flex-start", alignSelf: "flex-start", paddingHorizontal: 10, marginTop: 20 }} >
-                        <Text style={{ fontSize: 25, fontWeight: "600" }} >MATTHIEO LORAICHIE</Text>
+                        <Text style={{ fontSize: 25, fontWeight: "600",marginTop:20, }} >MATTHIEO LORAICHIE</Text>
                     </View>
                 </View>
                 <View style={{ width: "50%" }} >
-                    <Image style={styles.imageStyle} source={{ uri: dummy }} />
+                    <Image style={styles.imageStyle} source={require('../../assets/images/athlete1.png')} />
                 </View>
             </View>
 
@@ -72,7 +72,7 @@ const Stats = ({ navigation }) => {
                 }
 
             </View>
-            <View style={{ paddingHorizontal: 5, width: "95%", borderRadius: 10, alignSelf: "center", backgroundColor: "#FFF", paddingVertical: 10, flexDirection: "row", alignItems: "center", justifyContent: "space-between" }} >
+            <View style={{ paddingHorizontal: 5, width: "95%", borderRadius: 10, alignSelf: "center", backgroundColor: "#FFF", paddingVertical: 10, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop:10 }} >
                 <View style={{ backgroundColor: "#dedede", height: 50, width: 50, borderRadius: 200, alignItems: "center" }} >
                     <View style={{ backgroundColor: "#6dd400", height: 25, width: 25, marginTop: 12 }} >
 
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     stats: {
-        marginTop: 20,
+        marginTop: 30,
         backgroundColor: "#fafafa",
         flexDirection: "row",
         justifyContent: "space-between",

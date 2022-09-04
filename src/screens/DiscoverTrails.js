@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Feather'
 import Heart from 'react-native-vector-icons/Entypo'
 import Chat from 'react-native-vector-icons/Ionicons'
 const DiscoverTrails = (props) => {
+    const {navigation}  = props;
     const DATA = [
         {
             id: '1',
@@ -33,15 +34,15 @@ const DiscoverTrails = (props) => {
           marginHorizontal:10}}>
               
               <Image source={item.logo}/>
-        <Text style={{marginTop:10,fontSize:16,fontWeight:'600'}}>{item.title}</Text>
+        <Text style={{marginTop:15,fontSize:16,fontWeight:'600'}}>{item.title}</Text>
         <View
         style={{flexDirection:'row',marginTop:20,alignItems:'baseline'}}>
             <Text style={{fontWeight:'800',fontSize:17,color:'#7EAA7C'}}>{item.price}</Text>
             <Text style={{opacity:0.8,fontWeight:'600'}}>/person</Text>
         </View>
-                <Text style={{marginTop:10}}>⭐ ⭐ ⭐ ⭐ ⭐  {item.rating}</Text>
-            <Text style={{marginTop:10,fontSize:15}}>{item.description}</Text>
-            <View style={{flexDirection:'row'}}>
+                <Text style={{marginTop:15}}>⭐ ⭐ ⭐ ⭐ ⭐  {item.rating}</Text>
+            <Text style={{marginTop:15,fontSize:15}}>{item.description}</Text>
+            <View style={{flexDirection:'row',marginTop:20}}>
                 <Text style={{backgroundColor:'gray',
                 opacity:0.5, 
                 fontWeight:'600',
@@ -73,7 +74,7 @@ const DiscoverTrails = (props) => {
             resizeMode='cover' style={{flex:1}}>
                 <View style={{flexDirection:'row',paddingLeft:10,paddingTop:40}}>
                     <TouchableOpacity onPress={()=>{}}>
-                    <Icon onPress={()=>props.navigation.openDrawer()} name="menu" size={20} t color='#fff'/>
+                    <Icon onPress={()=>props.navigation.openDrawer()} name="menu" size={20} color='#fff'/>
                     </TouchableOpacity>
                     <View style={{alignItems:'center'}}>
                     <Text style={{
@@ -92,9 +93,9 @@ const DiscoverTrails = (props) => {
                     <View style={{paddingRight:25,marginTop:20,flexDirection:'row',height:50,
                     alignItems:'center',
                     justifyContent:'center'}}>
-                        <TextInput style={{backgroundColor:'#fff',width:'75%',
+                        <TextInput style={{paddingVertical:10, backgroundColor:'#fff',width:'75%',
                         borderRadius:25,alignSelf:'center',paddingLeft:20}}placeholder='Search'/>
-                        {/* <Icon name='search'color='#000'size={14}/> */}
+                        <Icon name="search" size={20}  color='#7EAA7C' style={{position:'absolute',right:90}} />
                     </View>
 
                 </View>

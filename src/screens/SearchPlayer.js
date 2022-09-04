@@ -84,12 +84,14 @@ export default function SearchPlayer() {
         <View style={{alignItems:'center',paddingHorizontal:10,flexDirection:'row',backgroundColor:'#7EAA7C',
         width:'100%',height:80}}>
            
-           <Icon name="menu" size={20} t color='#fff'/>
-           <View style={{backgroundColor:'#fff',marginLeft:30,height:40,width:300,borderRadius:20}}>
+           <Icon name="menu" size={20}  color='#fff'/>
+           <View style={{backgroundColor:'#fff',marginLeft:30,height:40,width:300,borderRadius:20,justifyContent:'center',}}>
                <TextInput
                placeholder='Search' 
                style={{paddingLeft:20}}
+               inlineImageRight='search_icon'
                />
+               <Icon name="search" size={20}  color='#7EAA7C' style={{position:'absolute',right:15}} />
            </View>
         </View>
         <View style={{flexDirection:'row'}}>

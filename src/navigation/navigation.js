@@ -18,6 +18,9 @@ import DiscoverTrails from "../screens/DiscoverTrails";
 import Settings from '../screens/Settings'
 import InputForm from "../screens/InputForm";
 import ProfileAthlete from "../screens/ProfileAthlete";
+import SignupFan from "../screens/SignupFan";
+import AuthleteSoccer from "../screens/AuthleteSoccer";
+import Board from "../screens/Board";
 
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
@@ -27,6 +30,9 @@ export default function Navigation() {
                 <Stack.Screen options={{headerShown:false}} name="Signup1" component={Signup1} />
                 <Stack.Screen options={{headerShown:false}} name="Signup2" component={Signup2} />
                 <Stack.Screen options={{headerShown:false}} name="Signup3" component={Signup3} />
+                <Stack.Screen options={{headerShown:false}} name="SignupFan" component={SignupFan} />
+                <Stack.Screen options={{headerShown:false}} name="AuthleteSoccer" component={AuthleteSoccer} />
+                <Stack.Screen options={{headerShown:false}} name="Board" component={Board} />
                 <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
                 <Stack.Screen options={{headerShown:false}} name="ForgotPassword1" component={ForgotPassword1} />
                 <Stack.Screen options={{headerShown:false}} name="ForgotPassword2" component={ForgotPassword2} />

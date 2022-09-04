@@ -82,7 +82,7 @@ const ForgotPassword1 = ({ navigation }) => {
                 {verifyCodeState && <View style={{ marginTop: 15, width: "100%" }} >
                     <Input placeholder="Your verification code" onChange={(value)=>setCode(value)}/>
                 </View>}
-                {resetPasswordState && <View style={styles.input}>
+                {!resetPasswordState && <View style={{ marginTop: 0, width: "100%" }}>
                     <View style={{ marginTop: 15, width: "100%" }} >
                         <Input secureTextEntry={true} placeholder="Your New Password" onChange={(value)=>setPassword(value)}/>
                     </View>
