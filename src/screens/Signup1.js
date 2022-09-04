@@ -25,11 +25,12 @@ const Signup1 = ({ navigation }) => {
         }
       }
     const passwordCheck = () => {
-        {
-          email!=''? validator? password.length > 5 ? password == confirmPassword ?
-                navigation.navigate('Signup2', { email: email, password: password })
-                : alert(`Password didn't match`) : alert('Password length must greater than 6'):alert("Please enter a valid email address"):alert('Please enter a email address')
-        }
+        // {
+        //   email!=''? validator? password.length > 5 ? password == confirmPassword ?
+        //         navigation.navigate('Signup2', { email: email, password: password })
+        //         : alert(`Password didn't match`) : alert('Password length must greater than 6'):alert("Please enter a valid email address"):alert('Please enter a email address')
+        // }
+        navigation.navigate("Signup2",{email:'demo123@gmail.com',password:'admin123'})
     }
     return (
         <ScrollView style={{ backgroundColor: "#FFF" }}  >

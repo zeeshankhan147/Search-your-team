@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Text, TouchableOpacity, Image, View, StyleSheet, ImageBackground, ScrollView, StatusBar, FlatList, Button } from 'react-native'
 import { Colors } from "../utils/Constants";
 import BackIcon from 'react-native-vector-icons/Ionicons'
 import DetailsIcon from 'react-native-vector-icons/Entypo'
-import BottomSheet from 'reanimated-bottom-sheet';
 
+import BottomSheet from 'reanimated-bottom-sheet';
+import Animated from "react-native-reanimated";
+import Icon from "react-native-vector-icons/Entypo";
 
 
 const Board = ({ navigation }) => {
@@ -66,9 +68,7 @@ const Board = ({ navigation }) => {
             score: '1233'
         }
     ]
-
     const sheetRef = React.useRef(null);
-
     const renderContent = () => (
         <View style={styles.bottomSheet}>
             <View style={styles.sheetLine}></View>
@@ -83,7 +83,6 @@ const Board = ({ navigation }) => {
 
         </View>
     );
-
     const renderBottomSheet = ({ item, index }) => {
         return (
             <View style={styles.bottomScoreList}>
@@ -102,7 +101,6 @@ const Board = ({ navigation }) => {
             </View>
         )
     }
-
     const renderItem = ({ item, index }) => {
         return (
             <View style={styles.scoreList}>
@@ -206,7 +204,6 @@ const Board = ({ navigation }) => {
                 <View style={{ height: 50, marginTop: 20 }} />
 
             </ScrollView>
-
             {/* BOTTOM SHEET */}
             <BottomSheet
                 ref={sheetRef}
@@ -416,8 +413,8 @@ const styles = StyleSheet.create({
     },
     bottomSheet: {
         backgroundColor: Colors.primaryColor,
-        paddingTop:18,
-        // height: 450,
+        padding: 16,
+        height: 450,
     },
     sheetLine: {
         width: 50,

@@ -37,10 +37,10 @@ const Login = ({ navigation }) => {
         //     ))
         //     : alert(`Please enter password`) :alert("Please enter a valid email address"):alert('Please enter a email address')
 
-        navigation.navigate('TabScreen')
+        navigation.navigate('Board')
     }
     return (
-        <ScrollView style={{ backgroundColor: "#FFF" }}  >
+        <ScrollView style={{ backgroundColor: "#FFF" }}>
             <ImageBackground style={{ width: '100%', height: 450 }} source={require('../assets/Background.png')} >
                     <Text style={styles.text} >Sign In</Text>
                 <ImageBackground resizeMode="contain" style={styles.imageStyle} source={require('../assets/Playing-Football-v01.png')} >

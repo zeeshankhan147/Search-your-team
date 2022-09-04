@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { Text, TouchableOpacity, Image, View, StyleSheet, ImageBackground, ScrollView } from 'react-native'
 import AppButton from "../components/AppButton";
 import Input from "../components/Input";
@@ -6,6 +6,7 @@ import { Colors } from "../utils/Constants";
 
 const Signup2 = ({ navigation,route }) => {
     const [accountType, setAccountType] = useState('');
+
     return (
         <ScrollView style={{ backgroundColor: "#FFF" }}  >
             <ImageBackground style={{ width: '100%', height: 450 }} source={require('../assets/Background.png')} >
