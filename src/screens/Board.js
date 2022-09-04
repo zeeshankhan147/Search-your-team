@@ -1,12 +1,10 @@
-import React, { useState, useCallback, useMemo, useRef } from "react";
+import * as React from 'react';
 import { Text, TouchableOpacity, Image, View, StyleSheet, ImageBackground, ScrollView, StatusBar, FlatList, Button } from 'react-native'
 import { Colors } from "../utils/Constants";
 import BackIcon from 'react-native-vector-icons/Ionicons'
 import DetailsIcon from 'react-native-vector-icons/Entypo'
-import {
-    BottomSheetModal,
-    BottomSheetModalProvider,
-} from '@gorhom/bottom-sheet';
+import BottomSheet from 'reanimated-bottom-sheet';
+
 
 
 const Board = ({ navigation }) => {
@@ -68,19 +66,42 @@ const Board = ({ navigation }) => {
             score: '1233'
         }
     ]
-    // ref
-    const bottomSheetModalRef = useRef < BottomSheetModal > (null);
 
-    // variables
-    const snapPoints = useMemo(() => ['25%', '50%'], []);
+    const sheetRef = React.useRef(null);
 
-    // callbacks
-    const handlePresentModalPress = useCallback(() => {
-        bottomSheetModalRef.current?.present();
-    }, []);
-    const handleSheetChanges = useCallback((index: number) => {
-        console.log('handleSheetChanges', index);
-    }, []);
+    const renderContent = () => (
+        <View style={styles.bottomSheet}>
+            <View style={styles.sheetLine}></View>
+
+            <View style={styles.bottomSheetList}>
+                <FlatList
+                    data={DATA}
+                    renderItem={renderBottomSheet}
+                    keyExtractor={item => item.id}
+                />
+            </View>
+
+        </View>
+    );
+
+    const renderBottomSheet = ({ item, index }) => {
+        return (
+            <View style={styles.bottomScoreList}>
+                <View style={styles.bottomFlexStart}>
+                    <Text style={styles.bottomSerial}>{item.num}</Text>
+                    <Image style={styles.bottomProfImg} source={item.icon} />
+                    <Text style={styles.bottomName}>{item.name}</Text>
+
+                </View>
+                <View style={styles.bottomFlexEnd}>
+                    <View style={styles.bottomScoreBox}>
+                        <Text style={styles.bottomScoreText}>{item.score}</Text>
+                    </View>
+
+                </View>
+            </View>
+        )
+    }
 
     const renderItem = ({ item, index }) => {
         return (
@@ -101,103 +122,105 @@ const Board = ({ navigation }) => {
         )
     }
     return (
-        <ScrollView style={styles.mainScrollView}  >
-            <StatusBar backgroundColor={"#fafafa"} />
-            {/* HEADER SECTION */}
-            <View style={styles.header} >
-                <BackIcon onPress={() => navigation.goBack()} name="arrow-back-outline" size={25} color={"#000"} />
-                <Text style={styles.text} >Leader Board</Text>
-                <DetailsIcon name="dots-three-vertical" size={22} color={"#000"} />
-            </View>
+        <View style={styles.mainScrollView}>
+            <ScrollView>
+                <StatusBar backgroundColor={"#fafafa"} />
+                {/* HEADER SECTION */}
+                <View style={styles.header} >
+                    <BackIcon onPress={() => navigation.goBack()} name="arrow-back-outline" size={25} color={"#000"} />
+                    <Text style={styles.text} >Leader Board</Text>
+                    <DetailsIcon name="dots-three-vertical" size={22} color={"#000"} />
+                </View>
 
-            {/* TAB BUTTON */}
-            <View style={styles.tabBtn}>
-                <View style={styles.thisMonth}>
-                    <Text style={styles.monthText}>This Month</Text>
+                {/* TAB BUTTON */}
+                <View style={styles.tabBtn}>
+                    <View style={styles.thisMonth}>
+                        <Text style={styles.monthText}>This Month</Text>
+                    </View>
+                    <View style={styles.allTime}>
+                        <Text style={styles.monthText}>All Time</Text>
+                    </View>
                 </View>
-                <View style={styles.allTime}>
-                    <Text style={styles.monthText}>All Time</Text>
-                </View>
-            </View>
 
-            {/* CIRCLE VIEW */}
-            <View style={styles.circles}>
-                <View style={styles.circles1}>
-                    <View style={[styles.num, {
-                        width: 25, height: 25, borderRadius: 25,
-                        top: 20, left: 90, backgroundColor: '#FF7A7A',
-                    }]}>
-                        <Text style={styles.numText}>2</Text>
+                {/* CIRCLE VIEW */}
+                <View style={styles.circles}>
+                    <View style={styles.circles1}>
+                        <View style={[styles.num, {
+                            width: 25, height: 25, borderRadius: 25,
+                            top: 20, left: 90, backgroundColor: '#FF7A7A',
+                        }]}>
+                            <Text style={styles.numText}>2</Text>
+                        </View>
+                        <Image
+                            style={styles.img1}
+                            source={require('../../assets/images/athlete1.png')} />
+                        <Text style={styles.title}>Will Barrow</Text>
+                        <TouchableOpacity style={[styles.id, { backgroundColor: '#FF7A7A', }]}>
+                            <Text style={styles.btnText}>10239</Text>
+                        </TouchableOpacity>
                     </View>
-                    <Image
-                        style={styles.img1}
-                        source={require('../../assets/images/athlete1.png')} />
-                    <Text style={styles.title}>Will Barrow</Text>
-                    <TouchableOpacity style={[styles.id, { backgroundColor: '#FF7A7A', }]}>
-                        <Text style={styles.btnText}>10239</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.circles2}>
-                    <View style={[styles.num, {
-                        width: 29, height: 29, borderRadius: 29,
-                        top: 0, left: 90, backgroundColor: Colors.primaryColor,
-                    }]}>
-                        <Text style={styles.numText}>1</Text>
+                    <View style={styles.circles2}>
+                        <View style={[styles.num, {
+                            width: 29, height: 29, borderRadius: 29,
+                            top: 0, left: 90, backgroundColor: Colors.primaryColor,
+                        }]}>
+                            <Text style={styles.numText}>1</Text>
+                        </View>
+                        <Image
+                            style={styles.img2}
+                            source={require('../../assets/images/trial.png')} />
+                        <Text style={styles.title}>Joss Sticks</Text>
+                        <TouchableOpacity style={[styles.id, { backgroundColor: Colors.primaryColor, }]}>
+                            <Text style={styles.btnText}>2888333</Text>
+                        </TouchableOpacity>
                     </View>
-                    <Image
-                        style={styles.img2}
-                        source={require('../../assets/images/trial.png')} />
-                    <Text style={styles.title}>Joss Sticks</Text>
-                    <TouchableOpacity style={[styles.id, { backgroundColor: Colors.primaryColor, }]}>
-                        <Text style={styles.btnText}>2888333</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.circles3}>
-                    <View style={[styles.num, {
-                        width: 25, height: 25, borderRadius: 25,
-                        top: 20, left: 90, backgroundColor: '#3E90DC',
-                    }]}>
-                        <Text style={styles.numText}>3</Text>
+                    <View style={styles.circles3}>
+                        <View style={[styles.num, {
+                            width: 25, height: 25, borderRadius: 25,
+                            top: 20, left: 90, backgroundColor: '#3E90DC',
+                        }]}>
+                            <Text style={styles.numText}>3</Text>
+                        </View>
+                        <Image
+                            style={styles.img3}
+                            source={require('../../assets/images/background.png')} />
+                        <Text style={styles.title}>Justin Case</Text>
+                        <TouchableOpacity style={[styles.id, { backgroundColor: '#3E90DC', }]}>
+                            <Text style={styles.btnText}>10239</Text>
+                        </TouchableOpacity>
                     </View>
-                    <Image
-                        style={styles.img3}
-                        source={require('../../assets/images/background.png')} />
-                    <Text style={styles.title}>Justin Case</Text>
-                    <TouchableOpacity style={[styles.id, { backgroundColor: '#3E90DC', }]}>
-                        <Text style={styles.btnText}>10239</Text>
-                    </TouchableOpacity>
                 </View>
-            </View>
 
-            {/* ALL POSTION LIST */}
-            <View style={styles.scoreListContainer}>
-                <FlatList
-                    data={DATA}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
-            </View>
+                {/* ALL POSTION LIST */}
+                <View style={styles.scoreListContainer}>
+                    <FlatList
+                        data={DATA}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
+                </View>
+
+
+
+                {/* FOR BOTTOM MARGIN */}
+                <View style={{ height: 50, marginTop: 20 }} />
+
+            </ScrollView>
 
             {/* BOTTOM SHEET */}
-            <BottomSheetModalProvider>
-                <View style={styles.container}>
-                    <BottomSheetModal
-                        // ref={bottomSheetModalRef}
-                        index={1}
-                        snapPoints={snapPoints}
-                        onChange={handleSheetChanges}
-                    >
-                        <View style={styles.contentContainer}>
-                            <Text>Awesome 🎉</Text>
-                        </View>
-                    </BottomSheetModal>
-                </View>
-            </BottomSheetModalProvider>
+            <BottomSheet
+                ref={sheetRef}
+                snapPoints={[100, 500]}
+                initialSnap={0}
+                borderRadius={40}
+                renderContent={renderContent}
+                enabledGestureInteraction={true}
+            // renderHeader={renderHeader}
+            />
+        </View>
 
-            {/* FOR BOTTOM MARGIN */}
-            <View style={{ height: 50, marginTop: 20 }} />
-        </ScrollView>
     )
+
 }
 
 const styles = StyleSheet.create({
@@ -377,12 +400,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
 
-    // FOR BOTTOM SHEET -->>
+    // FOR BOTTOM SHEET ------->>
     container: {
         flex: 1,
-        marginTop:20,
-        borderTopRightRadius:30,
-        borderTopLeftRadius:30,
+        marginTop: 20,
+        borderTopRightRadius: 30,
+        borderTopLeftRadius: 30,
         padding: 24,
         justifyContent: 'center',
         backgroundColor: Colors.primaryColor,
@@ -390,6 +413,68 @@ const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
         alignItems: 'center',
+    },
+    bottomSheet: {
+        backgroundColor: Colors.primaryColor,
+        paddingTop:18,
+        // height: 450,
+    },
+    sheetLine: {
+        width: 50,
+        height: 6,
+        backgroundColor: '#eee',
+        borderRadius: 20,
+        alignSelf: 'center'
+    },
+    bottomSheetList: {
+        marginTop: 0,
+    },
+    bottomScoreList: {
+        flex: 1,
+        marginTop: 20,
+        flexDirection: 'row',
+        width: '100%',
+        paddingHorizontal: 15
+    },
+    bottomFlexStart: {
+        alignItems: 'flex-start',
+        width: '80%',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    bottomSerial: {
+        color: '#fff',
+        fontSize: 16
+
+    },
+    bottomProfImg: {
+        marginLeft: 20,
+        width: 41,
+        height: 41,
+        borderRadius: 41
+
+    },
+    bottomName: {
+        marginLeft: 20,
+        color: '#fff'
+
+    },
+    bottomFlexEnd: {
+        alignItems: 'flex-end',
+        width: '20%',
+        justifyContent: 'center',
+    },
+    bottomScoreBox: {
+        width: 72,
+        height: 30,
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        justifyContent: 'center'
+    },
+    bottomScoreText: {
+        color: '#333A33',
+        alignSelf: 'center'
     },
 
 })
