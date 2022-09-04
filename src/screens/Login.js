@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
         //     ))
         //     : alert(`Please enter password`) :alert("Please enter a valid email address"):alert('Please enter a email address')
 
-        navigation.navigate('Board')
+        navigation.navigate('TabScreen')
     }
     return (
         <ScrollView style={{ backgroundColor: "#FFF" }}  >
