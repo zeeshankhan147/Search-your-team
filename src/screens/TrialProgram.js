@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Text, View, Image, FlatList, TouchableOpacity, ImageBackground } from 'react-native'
+import { Text, View, Image, FlatList, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 import Heart from 'react-native-vector-icons/Entypo'
 import Chat from 'react-native-vector-icons/Ionicons'
+import VideoPlayer from 'react-native-video-player'
+import { Colors } from "../utils/Constants";
 export default TrialProgram = ({ navigation }) => {
     const [progress, setProgress] = useState(true);
     const [schedule, setSchedule] = useState(false);
@@ -51,6 +53,7 @@ export default TrialProgram = ({ navigation }) => {
             </View>
         </View>
     );
+
     return (
         <View style={{ flex: 1 }}>
             <View style={{ flex: 1 }}>
@@ -64,10 +67,10 @@ export default TrialProgram = ({ navigation }) => {
                     </View>
                     <View style={{ flexDirection: 'row', marginLeft: 10, alignItems: 'center', marginBottom: 35 }}>
                         <Image source={require('../../assets/logo/Icon.png')} />
-                        <View style={{ marginLeft: 10 }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('VideoModal',{video:require('../assets/football.mp4')})} style={{ marginLeft: 10 }}>
                             <Text style={{ color: '#fff', fontWeight: 'bold' }}>Play Video</Text>
                             <Text style={{ color: '#fff', fontWeight: 'bold' }}>3:45</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </ImageBackground>
             </View>
@@ -106,7 +109,7 @@ export default TrialProgram = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
             </View>
-            {progress ? (<View style={{ marginBottom: 10, marginTop:20 }}>
+            {progress ? (<View style={{ marginBottom: 10, marginTop: 20 }}>
                 <View style={{ backgroundColor: '#fff', width: 50, height: 25, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 15, marginLeft: 20, justifyContent: 'space-evenly', flexDirection: 'row' }}>
                     <Text>U9</Text>
                     <Icon name='chevron-down' />
@@ -154,7 +157,7 @@ export default TrialProgram = ({ navigation }) => {
                         <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 16 }}>Sun</Text>
                     </View>
                 </View>
-                <View style={{ marginBottom: 10 , marginTop:20}}>
+                <View style={{ marginBottom: 10, marginTop: 20 }}>
                     <FlatList
                         data={DATA}
                         renderItem={renderItem}
@@ -164,3 +167,9 @@ export default TrialProgram = ({ navigation }) => {
         </View>
     )
 }
+const styles = StyleSheet.create({
+    trendingVideo: {
+        borderRadius: 8,
+        backgroundColor: Colors.primaryColor
+    },
+})

@@ -21,6 +21,7 @@ import ProfileAthlete from "../screens/ProfileAthlete";
 import SignupFan from "../screens/SignupFan";
 import AuthleteSoccer from "../screens/AuthleteSoccer";
 import Board from "../screens/Board";
+import VideoModal from "../screens/VideoModal";
 
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
@@ -40,11 +41,11 @@ export default function Navigation() {
                 <Stack.Screen options={{headerShown:false}} name="General" component={General} />
                 <Stack.Screen options={{headerShown:false}} name="DiscoverTrails" component={DiscoverTrails} />
                 <Stack.Screen options={{headerShown:false}} name="Settings" component={Settings} />
-                {/* <Stack.Screen options={{headerShown:false}} name="General" component={General} /> */}
                 <Stack.Screen options={{headerShown:false}} name="TabScreen" component={BottomTabs} />
                 <Stack.Screen options={{headerShown:false}} name="ProfileAthlete" component={ProfileAthlete} />
                 {/* <Stack.Screen name="Drawer" component={Drawer}/> */}
                 <Stack.Screen name="TrialProgram" component={TrialProgram} options={{ headerShown: false }}/>
+                <Stack.Screen name="VideoModal" component={VideoModal} options={{ headerShown: false }}/>
                 <Stack.Screen name="PostDetails" component={PostDetails} options={{ headerShown: false }}/>
                 <Stack.Screen options={{headerShown:false}} name="InputForm" component={InputForm}/>
             </Stack.Navigator>

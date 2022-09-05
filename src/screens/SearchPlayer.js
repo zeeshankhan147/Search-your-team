@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { View, Text, TextInput, FlatList,Image,TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
-export default function SearchPlayer() {
+export default function SearchPlayer(props) {
     const DATA = [
         {
             id:'1',
@@ -83,8 +83,10 @@ export default function SearchPlayer() {
         <View>
         <View style={{alignItems:'center',paddingHorizontal:10,flexDirection:'row',backgroundColor:'#7EAA7C',
         width:'100%',height:80}}>
-           
+           <TouchableOpacity>
            <Icon name="menu" size={20}  color='#fff'/>
+
+           </TouchableOpacity>
            <View style={{backgroundColor:'#fff',marginLeft:30,height:40,width:300,borderRadius:20,justifyContent:'center',}}>
                <TextInput
                placeholder='Search' 

@@ -105,9 +105,11 @@ const Home = ({ navigation }) => {
                 <Icon name='more-horizontal' size={30} style={styles.dotIcon} />
             </View>
 
-            <Image source={item.image}
-                resizeMode='stretch'
-                style={styles.postImage} />
+            <TouchableOpacity onPress={()=> navigation.navigate('PostDetails')} activeOpacity={0.9}>
+                <Image source={item.image}
+                    resizeMode='stretch'
+                    style={styles.postImage} />
+            </TouchableOpacity>
 
             <Text style={styles.postDesc}>
                 {item.description}

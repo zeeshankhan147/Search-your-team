@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, Image, TouchableOpacity } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -27,11 +27,12 @@ import Video from "../screens/Video";
 const Tab = createBottomTabNavigator();
 
 
-export default function BottomTabs() {
+export default function BottomTabs(props) {
+
     return (
-        <Tab.Navigator screenOptions={{tabBarStyle:{backgroundColor:"#FFF",height:70,alignItems:"center"},tabBarShowLabel:false}} >
+        <Tab.Navigator screenOptions={{ tabBarStyle: { backgroundColor: "#FFF", height: 70, alignItems: "center" }, tabBarShowLabel: false }} >
             <Tab.Screen
-            // screenOptions={{headerShown:false}}
+                // screenOptions={{headerShown:false}}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => <HomeIcon color={focused ? Colors.primaryColor : Colors.borderColor} name="home" size={30} />
@@ -53,7 +54,7 @@ export default function BottomTabs() {
 
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ focused }) => <HomeIcon style={{ position: "absolute", top: 4, zIndex: 10 }} color={ Colors.primaryColor} name="pluscircle" size={50} />
+                    tabBarIcon: ({ focused }) => <HomeIcon style={{ position: "absolute", top: 4, zIndex: 10 }} color={Colors.primaryColor} name="pluscircle" size={50} />
 
                 }}
                 component={Video}
@@ -71,11 +72,11 @@ export default function BottomTabs() {
             />
             <Tab.Screen
                 options={{
-                    headerShown:false,
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => <ProfileIcon color={focused ? Colors.primaryColor : Colors.borderColor} name="user-alt" size={30} />
                 }}
 
-                component={ProfileFan}
+                component={props?.route?.params?.accountType == 'Fan' ? ProfileFan : ProfileAthlete}
                 name="Profile"
             />
             {/* <Tab.Screen name="Login" component={Login} />

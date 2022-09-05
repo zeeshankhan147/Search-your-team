@@ -1,15 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Text, TouchableOpacity, Image, View, StyleSheet, ImageBackground, ScrollView, StatusBar, FlatList, Button } from 'react-native'
 import { Colors } from "../utils/Constants";
 import BackIcon from 'react-native-vector-icons/Ionicons'
 import DetailsIcon from 'react-native-vector-icons/Entypo'
 
+import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
-import Animated from "react-native-reanimated";
 import Icon from "react-native-vector-icons/Entypo";
 
 
 const Board = ({ navigation }) => {
+    console.disableYellowBox = true;
     const DATA = [
         {
             id: '1',
@@ -69,6 +70,8 @@ const Board = ({ navigation }) => {
         }
     ]
     const sheetRef = React.useRef(null);
+    const fall =  new Animated.Value(1)
+
     const renderContent = () => (
         <View style={styles.bottomSheet}>
             <View style={styles.sheetLine}></View>
@@ -121,14 +124,15 @@ const Board = ({ navigation }) => {
     }
     return (
         <View style={styles.mainScrollView}>
+            <StatusBar backgroundColor={"#fafafa"} />
+            {/* HEADER SECTION */}
+            <View style={styles.header} >
+                <BackIcon onPress={() => navigation.goBack()} name="arrow-back-outline" size={25} color={"#000"} />
+                <Text style={styles.text} >Leader Board</Text>
+                <DetailsIcon name="dots-three-vertical" size={22} color={"#000"} />
+            </View>
+
             <ScrollView>
-                <StatusBar backgroundColor={"#fafafa"} />
-                {/* HEADER SECTION */}
-                <View style={styles.header} >
-                    <BackIcon onPress={() => navigation.goBack()} name="arrow-back-outline" size={25} color={"#000"} />
-                    <Text style={styles.text} >Leader Board</Text>
-                    <DetailsIcon name="dots-three-vertical" size={22} color={"#000"} />
-                </View>
 
                 {/* TAB BUTTON */}
                 <View style={styles.tabBtn}>
@@ -211,8 +215,8 @@ const Board = ({ navigation }) => {
                 initialSnap={0}
                 borderRadius={40}
                 renderContent={renderContent}
+                callbackNode={fall}
                 enabledGestureInteraction={true}
-            // renderHeader={renderHeader}
             />
         </View>
 
@@ -414,7 +418,7 @@ const styles = StyleSheet.create({
     bottomSheet: {
         backgroundColor: Colors.primaryColor,
         padding: 16,
-        height: 450,
+        // height: 450,
     },
     sheetLine: {
         width: 50,

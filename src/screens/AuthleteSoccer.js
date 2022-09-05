@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, Image, View, StyleSheet, ImageBackground, ScrollView, FlatList } from 'react-native'
 import AppButton from "../components/AppButton";
 import Input from "../components/Input";
@@ -45,7 +45,7 @@ const AuthleteSoccer = ({ navigation, route }, props) => {
             addBtn: false,
         }
     ]
-
+    
     const [userPic, setUserPic] = useState(dummy)
     const [wherePlaying, setWherePlaying] = useState('')
     const [fullname, setFullname] = useState('')
@@ -67,17 +67,19 @@ const AuthleteSoccer = ({ navigation, route }, props) => {
         });
     }
     const registration = () => {
-        {
-            wherePlaying && fullname && dob ? dispatch(userRegister(
-                wherePlaying,
-                route.params.email,
-                route.params.password,
-                fullname,
-                dob,
-                route.params.accountType,
-                () => navigation.navigate('TabScreen')
-            )) : alert('Please enter all the required fields')
-        }
+        // {
+        //     wherePlaying && fullname && dob ? dispatch(userRegister(
+        //         wherePlaying,
+        //         route.params.email,
+        //         route.params.password,
+        //         fullname,
+        //         dob,
+        //         route.params.accountType,
+        //         () => navigation.navigate('TabScreen')
+        //     )) : alert('Please enter all the required fields')
+        // }
+
+        navigation.navigate('TabScreen', { accountType: route.params.accountType })
     }
     const renderItem = ({ item, index }) => {
         return (

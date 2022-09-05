@@ -40,10 +40,11 @@ const ForgotPassword1 = ({ navigation }) => {
         }
       }
     const ForgotPassword = () => {
-       {email!=''? validator? dispatch(forgotPassword(
-            email,
-            () => { setForgot(false), setVerifyCode(true) }
-        )):alert("Please enter a valid email address"):alert('Please enter email')}
+    //    {email!=''? validator? dispatch(forgotPassword(
+    //         email,
+    //         () => { setForgot(false), setVerifyCode(true) }
+    //     )):alert("Please enter a valid email address"):alert('Please enter email')}
+    navigation.navigate('ForgotPassword2')
     }
     const VerifyCode = () => {
         {code.length==4? dispatch(verifyCode(

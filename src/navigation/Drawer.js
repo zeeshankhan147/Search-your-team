@@ -237,7 +237,7 @@ const CustomDrawer = props => {
 
                     </View>
                 </View>
-                <Text style={{ fontSize: 20, paddingHorizontal: 12, paddingVertical: 10 }} >Account</Text>
+                <Text style={{ fontSize: 20, paddingHorizontal: 12, paddingVertical: 10, marginLeft:14 }} >Account</Text>
                 <View style={{ flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "space-between", paddingHorizontal: 10 }} >
                     <Image resizeMode="contain" style={{ width: 110, height: 110 }} source={require('../assets/Image.png')} />
                     <View style={{marginRight:10}}  >
@@ -273,11 +273,11 @@ const CustomDrawer = props => {
 const styles = StyleSheet.create({
     navigationStyles: {
         color: "grey",
-        fontSize: 22,
+        fontSize: 20,
     },
     navigationText:{
         marginTop:20,
-        paddingVertical:20,
+        paddingVertical:15,
         paddingHorizontal:10
     }
 })

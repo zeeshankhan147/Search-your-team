@@ -12,7 +12,7 @@ const Login = ({ navigation }) => {
     const [validator, setValidator]= useState(false);
     const dispatch = useDispatch()
     const state = useSelector(state => state.auth.isLoading)
-    // alert(state)
+    console.disableYellowBox = true;
     emailValidate = (email) => {
         console.log(email);
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
         //     ))
         //     : alert(`Please enter password`) :alert("Please enter a valid email address"):alert('Please enter a email address')
 
-        navigation.navigate('Board')
+        navigation.navigate('TabScreen')
     }
     return (
         <ScrollView style={{ backgroundColor: "#FFF" }}>

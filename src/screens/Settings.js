@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, Image, FlatList } from 'react-native'
+import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native'
 import Ionic from 'react-native-vector-icons/Ionicons'
 import Icon from 'react-native-vector-icons/Feather'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 export default function Settings({ navigation }) {
     const DATA = [
         {
@@ -39,7 +38,7 @@ export default function Settings({ navigation }) {
     const renderItem = ({ item, index }) => (
         <View style={{ width: '100%', backgroundColor: '#fff' }}>
             <View style={{ flexDirection: 'row', padding: 20, alignItems: 'center', justifyContent: 'space-between', alignItems: 'center' }}>
-                <TouchableOpacity disabled={item.title !== 'General'} onPress={() => navigation.navigate(item.title)} style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('General')} style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <View style={{ marginRight: 10, backgroundColor: '#f9f9f9', height: 35, width: 35, justifyContent: 'center', alignItems: 'center', borderRadius: 40 }}>
                         <Ionic name={item.icon} size={20} color={item.color} />
                     </View>
@@ -54,7 +53,7 @@ export default function Settings({ navigation }) {
             <Ionic onPress={() => navigation.goBack()} name='arrow-back' size={25} color='#000' style={{ paddingLeft: 10, paddingBottom: 20 }} />
             <View style={{ flexDirection: 'row', justifyContent: 'center', backgroundColor: '#f5f5f5', borderRadius: 20, height: 50, alignItems: 'center', marginHorizontal: 30 }}>
                 <View style={{
-                    width: '50%', borderRadius: 10, backgroundColor: '#fff', alignItems: 'center', height: 50, justifyContent: 'center',
+                    width: '50%', borderRadius: 10, backgroundColor: '#fff', alignItems: 'center', height: 45,elevation:10, justifyContent: 'center',
                     shadowColor:'#d0d0d0',shadowOpacity:0.7,shadowRadius:10,shadowOffset:{width:1,height:1}
                 }}>
                     <Text style={{ color: '#7EAA7C' }}>Profile</Text>

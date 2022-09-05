@@ -12,10 +12,10 @@ export default function General({navigation}) {
                 <Text style={{ color: '#000', alignSelf: 'center', fontSize: 18 }}>General</Text>
                 <View />
             </View>
-            <View style={{ marginHorizontal: 15, marginTop: 50 }}>
+            {/* <View style={{ marginHorizontal: 15, marginTop: 50 }}>
                 <Text style={{ fontSize: 15, marginBottom: 5 }}>Language</Text>
                 <TextInput style={styles.inputs} placeholder='English' />
-            </View>
+            </View> */}
             <View style={{ marginHorizontal: 15, marginTop: 20 }}>
                 <Text style={{ fontSize: 15, marginBottom: 5 }}>Name</Text>
                 <TextInput style={styles.inputs} placeholder='Matthieu Laroche' />
