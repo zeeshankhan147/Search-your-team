@@ -44,7 +44,7 @@ export default function Settings({ navigation }) {
                     </View>
                     <Text>{item.title}</Text>
                 </TouchableOpacity>
-                <Icon name='edit-2' size={20} />
+                <Icon name='edit-2' size={20}/>
             </View>
         </View>
     );
