@@ -5,6 +5,7 @@ import { Colors } from "../utils/Constants";
 import VideoPlayer from 'react-native-video-player'
 const ProfileAthlete = () => {
     const { width: windowWidth } = useWindowDimensions();
+    console.reportErrorsAsExceptions = false;
     const DATA = [
         {
             id: '1',

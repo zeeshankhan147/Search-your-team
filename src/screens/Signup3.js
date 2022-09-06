@@ -51,7 +51,7 @@ const Signup3 = ({ navigation, route }, props) => {
             <ImageBackground style={{ width: '100%', height: 450 }} source={require('../assets/Background.png')} >
                 <Text style={styles.text} >Sign Up</Text>
                 <View style={{ flexDirection: "row", alignItems: "center", alignSelf: "center" }} >
-                    <Image style={styles.imageStyle} source={{ uri: userPic }} />
+                    <Image style={styles.imageStyle} source={require('../assets/Image.png')} />
                     <PlusIcon onPress={() => addPhoto()} name="plus" size={25} color="#FFF" style={{ alignSelf: "center", bottom: 50, right: 20 }} />
                 </View>
             </ImageBackground>

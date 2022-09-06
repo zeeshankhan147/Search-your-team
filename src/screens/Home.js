@@ -8,6 +8,7 @@ import { getPost } from "../redux/actions/postAction";
 import { useSelector, connect, useDispatch } from "react-redux";
 import VideoPlayer from 'react-native-video-player'
 import { Colors } from "../utils/Constants";
+import { LogBox } from 'react-native';
 const Home = ({ navigation }) => {
     const DATA = [
         {
@@ -25,34 +26,34 @@ const Home = ({ navigation }) => {
             description: 'Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.',
         },
         {
-            id: '1',
+            id: '3',
             title: 'Matthieu Laroche',
             image: require('../../assets/images/Image1.png'),
             icon: require('../../assets/logo/icon1.png'),
             description: 'Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.',
         },
         {
-            id: '2',
+            id: '4',
             title: 'Carlos Vanelliope',
             image: require('../../assets/images/Image2.png'),
             icon: require('../../assets/logo/icon2.png'),
             description: 'Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.',
         }, {
-            id: '1',
+            id: '5',
             title: 'Matthieu Laroche',
             image: require('../../assets/images/Image1.png'),
             icon: require('../../assets/logo/icon1.png'),
             description: 'Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.',
         },
         {
-            id: '2',
+            id: '6',
             title: 'Carlos Vanelliope',
             image: require('../../assets/images/Image2.png'),
             icon: require('../../assets/logo/icon2.png'),
             description: 'Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.',
         },
     ];
-
+    console.reportErrorsAsExceptions = false;
     const dispatch = useDispatch();
     const userName = useSelector(state => state.auth.user)
     const state = useSelector(state => state.postReducer.data)
@@ -105,7 +106,7 @@ const Home = ({ navigation }) => {
                 <Icon name='more-horizontal' size={30} style={styles.dotIcon} />
             </View>
 
-            <TouchableOpacity onPress={()=> navigation.navigate('PostDetails')} activeOpacity={0.9}>
+            <TouchableOpacity onPress={() => navigation.navigate('PostDetails')} activeOpacity={0.9}>
                 <Image source={item.image}
                     resizeMode='stretch'
                     style={styles.postImage} />
@@ -138,7 +139,8 @@ const Home = ({ navigation }) => {
         </View>
     );
     return (
-        <ScrollView style={styles.mainContainer}>
+        <View nestedScrollEnabled={true}
+            style={styles.mainContainer}>
 
             {/* HEADER SECTION */}
             <View style={styles.header}>
@@ -152,36 +154,38 @@ const Home = ({ navigation }) => {
                 {/* <Chat name="add" size={25} color={'#fff'}   /> */}
             </View>
 
-            {/* TRENDING SECTION */}
-            <View style={styles.trendingContainer}>
-                <View style={styles.trending}>
-                    <Text style={styles.trendingText}>Trending </Text>
+            <ScrollView nestedScrollEnabled={true}>
+                {/* TRENDING SECTION */}
+                <View style={styles.trendingContainer}>
+                    <View style={styles.trending}>
+                        <Text style={styles.trendingText}>Trending </Text>
+                    </View>
+
+                    <View style={styles.trendingData}>
+                        <FlatList
+                            horizontal
+                            data={DATA}
+                            keyExtractor={item => item.id.toString()}
+                            renderItem={renderItem}
+                            showsHorizontalScrollIndicator={false}
+                        />
+                    </View>
                 </View>
 
-                <View style={styles.trendingData}>
+                {/* POST DETAIL SECTION */}
+                <View style={styles.postDetails}>
                     <FlatList
-                        horizontal
                         data={DATA}
-                        keyExtractor={item => item.id}
-                        renderItem={renderItem}
-                        showsHorizontalScrollIndicator={false}
+                        extraData={like}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={renderPostDetail}
+                        ListFooterComponent={() => (<View style={{ height: 50 }} />)}
                     />
                 </View>
-            </View>
-
-            {/* POST DETAIL SECTION */}
-            <View style={styles.postDetails}>
-                <FlatList
-                    data={DATA}
-                    extraData={like}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={item => item.id}
-                    renderItem={renderPostDetail}
-                    ListFooterComponent={() => (<View style={{ height: 50 }} />)}
-                />
-            </View>
+            </ScrollView>
             <View style={{ marginTop: 20 }} />
-        </ScrollView>
+        </View>
     )
 }
 // const mapStateToProps = ({ postReducer}) => {
@@ -197,6 +201,7 @@ export default
 
 const styles = StyleSheet.create({
     mainContainer: {
+        flex: 1
 
     },
     header: {
